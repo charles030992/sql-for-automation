@@ -1,0 +1,8 @@
+data/empresa.db
+reports/*.xlsx
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+MODULO_02_CIERRE.md
