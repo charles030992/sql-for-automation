@@ -1,4 +1,5 @@
 # sql-for-automation
+[![CI](https://github.com/charles030992/sql-for-automation/actions/workflows/ci.yml/badge.svg)](https://github.com/charles030992/sql-for-automation/actions/workflows/ci.yml)
 
 Business automation pipeline using SQL + Python + pandas to generate operational reports from enterprise fleet data.
 
