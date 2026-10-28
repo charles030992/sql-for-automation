@@ -1,4 +1,4 @@
--- Sample fleet data
+-- Sample fleet data (fictitious). Pending ITV dates are relative to today, so they are always upcoming.
 
 INSERT INTO vehiculos VALUES
 (1, '1234ABC', 'Ford',       'Transit',  'activo'),
@@ -8,10 +8,10 @@ INSERT INTO vehiculos VALUES
 (5, '3333JKL', 'Ford',       'Ranger',   'baja');
 
 INSERT INTO itv VALUES
-(1, 1, '2026-06-10', NULL,         'pendiente'),
+(1, 1, date('now', '+20 days'), NULL,         'pendiente'),
 (2, 2, '2026-07-20', 'favorable',  'ok'),
-(3, 4, '2026-05-30', NULL,         'pendiente'),
-(4, 3, '2026-08-15', NULL,         'pendiente');
+(3, 4, date('now', '+10 days'), NULL,         'pendiente'),
+(4, 3, date('now', '+45 days'), NULL,         'pendiente');
 
 INSERT INTO facturas VALUES
 (1, 'ALD',    'Renting mensual',  3200.00, '2026-05-01'),

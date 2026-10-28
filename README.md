@@ -15,7 +15,7 @@ This replaces a manual process that many companies still do with copy-paste and 
 
 ## Business context
 
-The domain is fleet management — a real operational environment with vehicles, ITV inspections, providers, and invoices. The same pipeline structure applies to any business domain with tabular data.
+The domain is fleet management: vehicles, ITV inspections, providers and invoices. **All the data in this repository is fictitious** (placeholder plates, invented amounts). The same pipeline structure applies to any business domain with tabular data.
 
 ## What it does
 
@@ -50,13 +50,15 @@ sql-for-automation/
 │   └── empresa.db          (auto-generated on first run)
 ├── sql/
 │   ├── schema.sql           table definitions
-│   ├── sample_data.sql      sample fleet data
+│   ├── sample_data.sql      sample fleet data (fictitious; pending ITV dates are relative to today)
 │   └── queries.sql          standalone SQL for reference
 ├── reports/
 │   └── reporte_operativo.xlsx  (auto-generated)
 ├── src/
 │   ├── setup_db.py          creates and populates the database
 │   └── main.py              runs the full pipeline
+├── tests/
+│   └── test_pipeline.py     queries, export and setup tests (in-memory SQLite)
 ├── requirements.txt
 └── README.md
 ```
@@ -82,6 +84,14 @@ python src/main.py
 
 The database is created automatically on first run. The Excel report is saved to `reports/reporte_operativo.xlsx`.
 
+## Tests
+
+```bash
+python -m unittest discover -s tests
+```
+
+They run the real schema and sample data in an in-memory SQLite database and check each query, the Excel export and that `sql/queries.sql` stays in sync with the queries in `src/main.py`.
+
 ## Stack
 
 - Python 3.11+
@@ -99,6 +109,11 @@ The pipeline is intentionally simple. Natural extensions:
 - Add LLM layer to generate a natural language summary of the report
 - Integrate with Power Automate for enterprise workflow triggers
 
+## Limitations
+
+- The "pending ITV" report lists every inspection marked as pending, including vehicles with status `baja`.
+- Sample data only: there is no import from a real system.
+
 ## About this project
 
 Built as part of a structured learning path focused on enterprise automation with Python, SQL and AI. The goal is to apply concepts directly to business scenarios — not academic exercises.
@@ -108,3 +123,7 @@ Built as part of a structured learning path focused on enterprise automation wit
 `Python` `SQL` `SQLite` `pandas` `openpyxl` `data automation` `reporting automation`
 `business process automation` `fleet management` `enterprise automation` `Excel automation`
 `ETL` `workflow automation` `automatización empresarial`
+
+## License
+
+MIT — see [LICENSE](./LICENSE).
